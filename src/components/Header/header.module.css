@@ -1,0 +1,41 @@
+.contactButton {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.contactButton::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 100%;
+  left: -25%;
+  width: 150%;
+  height: 300%;
+  border-radius: 50%;
+  background-color: var(--chili-pepper-500);
+  pointer-events: none;
+  transform: translateY(0);
+  transition: transform 450ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (hover: hover) {
+  .contactButton:hover::before {
+    transform: translateY(-66.667%);
+  }
+}
+
+.contactButton:focus-visible {
+  outline: 2px solid var(--chili-pepper-500);
+  outline-offset: 3px;
+}
+
+.contactButton:focus-visible::before {
+  transform: translateY(-66.667%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contactButton::before {
+    transition: none;
+  }
+}
